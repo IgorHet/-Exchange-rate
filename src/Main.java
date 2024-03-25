@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        // Створення об'єктів банків та їх курсів
+
         List<Bank> banks = new ArrayList<>();
         banks.add(new Bank("ПриватБанк", generateRate()));
         banks.add(new Bank("Ощадбанк", generateRate()));
@@ -21,9 +22,21 @@ public class Main {
         banks.add(new Bank("Акордбанк", generateRate()));
 
         // Виведення всіх банків на екран
-        System.out.println("Усі банки та їх курси:");
-        for (Bank bank : banks) {
-            System.out.println(bank);
+        System.out.println("Доступні банки та їх курси:");
+        for (int i = 0; i < banks.size(); i++) {
+            System.out.println((i + 1) + ". " + banks.get(i));
+        }
+
+        // Вибір банку користувачем
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введіть номер банку, курс якого ви хочете подивитися: ");
+        int bankIndex = scanner.nextInt();
+
+        if (bankIndex >= 1 && bankIndex <= banks.size()) {
+            Bank selectedBank = banks.get(bankIndex - 1);
+            System.out.println("Ви обрали " + selectedBank);
+        } else {
+            System.out.println("Невірний номер банку");
         }
     }
 
