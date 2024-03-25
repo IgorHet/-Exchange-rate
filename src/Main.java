@@ -20,30 +20,10 @@ public class Main {
         banks.add(new Bank("ПроКредит Банк", generateRate()));
         banks.add(new Bank("Акордбанк", generateRate()));
 
-        // Курс долара до гривні
-        double usdToUahRate = 27.50; // Припустимо, курс долара становить 27.50 гривень
-
-        // Пошук банків з найвигіднішим курсом обміну
-        List<Bank> bestBanks = new ArrayList<>();
-        double bestRate = 0;
-
+        // Виведення всіх банків на екран
+        System.out.println("Усі банки та їх курси:");
         for (Bank bank : banks) {
-            double rate = bank.getRate();
-            double uahAmount = 100 * rate; // Обмін 100 доларів на гривні
-
-            if (uahAmount > bestRate) {
-                bestRate = uahAmount;
-                bestBanks.clear();
-                bestBanks.add(bank);
-            } else if (uahAmount == bestRate) {
-                bestBanks.add(bank);
-            }
-        }
-
-        // Виведення найвигідніших банків на екран
-        System.out.println("Найвигідніші банки для обміну доларів на гривні:");
-        for (Bank bank : bestBanks) {
-            System.out.println(bank.getName() + " - курс: " + bank.getRate());
+            System.out.println(bank);
         }
     }
 

@@ -14,4 +14,9 @@ class Bank {
     public double getRate() {
         return rate;
     }
+
+    @Override
+    public String toString() {
+        return name + " - курс: " + rate;
+    }
 }
