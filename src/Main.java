@@ -1,43 +1,33 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
+        // Створення об'єктів банків та їх курсів
+        Bank[] banks = new Bank[14];
+        banks[0] = new Bank("ПриватБанк", generateRate());
+        banks[1] = new Bank("Ощадбанк", generateRate());
+        banks[2] = new Bank("Укрсоцбанк", generateRate());
+        banks[3] = new Bank("Альфа-Банк", generateRate());
+        banks[4] = new Bank("Райффайзен Банк Аваль", generateRate());
+        banks[5] = new Bank("Укрексімбанк", generateRate());
+        banks[6] = new Bank("Креді Агріколь Банк", generateRate());
+        banks[7] = new Bank("МоноБанк", generateRate());
+        banks[8] = new Bank("Форвард Банк", generateRate());
+        banks[9] = new Bank("Кредобанк", generateRate());
+        banks[10] = new Bank("ПУМБ", generateRate());
+        banks[11] = new Bank("Укргазбанк", generateRate());
+        banks[12] = new Bank("ПроКредит Банк", generateRate());
+        banks[13] = new Bank("Акордбанк", generateRate());
 
-        List<Bank> banks = new ArrayList<>();
-        banks.add(new Bank("ПриватБанк", generateRate()));
-        banks.add(new Bank("Ощадбанк", generateRate()));
-        banks.add(new Bank("Укрсоцбанк", generateRate()));
-        banks.add(new Bank("Альфа-Банк", generateRate()));
-        banks.add(new Bank("Райффайзен Банк Аваль", generateRate()));
-        banks.add(new Bank("Укрексімбанк", generateRate()));
-        banks.add(new Bank("Креді Агріколь Банк", generateRate()));
-        banks.add(new Bank("МоноБанк", generateRate()));
-        banks.add(new Bank("Форвард Банк", generateRate()));
-        banks.add(new Bank("Кредобанк", generateRate()));
-        banks.add(new Bank("ПУМБ", generateRate()));
-        banks.add(new Bank("Укргазбанк", generateRate()));
-        banks.add(new Bank("ПроКредит Банк", generateRate()));
-        banks.add(new Bank("Акордбанк", generateRate()));
-
-        // Виведення всіх банків на екран
-        System.out.println("Доступні банки та їх курси:");
-        for (int i = 0; i < banks.size(); i++) {
-            System.out.println((i + 1) + ". " + banks.get(i));
+        // Знайти найкращий банк за курсом
+        Bank bestBank = banks[0];
+        for (int i = 1; i < banks.length; i++) {
+            if (banks[i].getRate() < bestBank.getRate()) {
+                bestBank = banks[i];
+            }
         }
 
-        // Вибір банку користувачем
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введіть номер банку, курс якого ви хочете подивитися: ");
-        int bankIndex = scanner.nextInt();
-
-        if (bankIndex >= 1 && bankIndex <= banks.size()) {
-            Bank selectedBank = banks.get(bankIndex - 1);
-            System.out.println("Ви обрали " + selectedBank);
-        } else {
-            System.out.println("Невірний номер банку");
-        }
+        // Виведення найкращого банку на екран
+        System.out.println("Найкращий банк за курсом: " + bestBank);
     }
 
     // Метод для генерації випадкового курсу обміну
