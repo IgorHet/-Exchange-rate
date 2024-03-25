@@ -7,9 +7,6 @@ class Bank {
         this.rate = rate;
     }
 
-    public String getName() {
-        return name;
-    }
 
     public double getRate() {
         return rate;
